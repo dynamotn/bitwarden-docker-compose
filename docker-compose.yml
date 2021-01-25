@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  bitwarden:
+    image: bitwardenrs/server:alpine
+    restart: always
+    volumes:
+      - ./data:/data
+    env_file:
+      - ./bitwarden.env
+
+  proxy:
+    image: caddy:alpine
+    restart: always
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddycerts:/root/.caddy
+    ports:
+      - 80:80
+      - 443:443
+    env_file:
+      - ./proxy.env
+
+volumes:
+  caddycerts:
