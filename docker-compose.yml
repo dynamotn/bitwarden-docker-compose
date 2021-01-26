@@ -6,6 +6,7 @@ services:
     restart: always
     volumes:
       - ./data:/data
+      - ./log:/log
     env_file:
       - ./bitwarden.env
 
@@ -15,6 +16,7 @@ services:
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddycerts:/root/.caddy
+      - ./log:/log
     ports:
       - 80:80
       - 443:443
