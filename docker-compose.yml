@@ -1,8 +1,8 @@
-version: '3'
+version: "3"
 
 services:
   bitwarden:
-    image: bitwardenrs/server:alpine
+    image: vaultwarden/server:alpine
     restart: always
     volumes:
       - ./data:/data
